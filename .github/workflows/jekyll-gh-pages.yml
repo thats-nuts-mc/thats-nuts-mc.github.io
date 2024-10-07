@@ -41,7 +41,9 @@ jobs:
           folder: ${{github.workspace}}
           filename: indexes.md
           include: |
+            *.*
             *
+            */
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
