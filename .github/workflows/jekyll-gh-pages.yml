@@ -35,11 +35,11 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Generated Markdown Readmes
-        uses: DaanV2/Markdown-Action-Create-Indexes@v2.0.0
-        with: 
-          folder: ${{github.workspace}}
-          filename: indexes.md
+      # - name: Generated Markdown Readmes
+        # uses: DaanV2/Markdown-Action-Create-Indexes@v2.0.0
+        # with: 
+          # folder: ${{github.workspace}}
+          # filename: indexes.md
     #      include: |
     #        *.*
     #        *
