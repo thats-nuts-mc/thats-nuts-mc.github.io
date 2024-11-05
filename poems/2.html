@@ -9,9 +9,36 @@
             color:white;
             background-color: #222;
         }
+        * {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
     </style>
+    <script>
+        onload = function(){
+            
+            sp = document.querySelector("#time")
+            bl = document.querySelector("#blocker")
+            function setcontent(e) {
+                sp.innerHTML=e
+            }
+            function tmr(sec) {
+                setcontent(`${Math.floor(sec/60)}:${sec%60}`)
+                if (sec < 1) {
+                    bl.style.display="none"
+                } else {
+                    setTimeout(()=>tmr(sec-1),1000)
+                }
+            }
+            tmr(300)
+        }
+    </script>
 </head>
 <body>
+<div id="blocker" style="position: fixed; left: 0; top:0; right:0; bottom:0; background-color:#22222255; backdrop-filter: blur(20px); align-content: center;justify-content: center;text-align: center;">Poem will be avalible in <span id="time"></span><br>to skip the wait, purchace premium<br><br>Any attempt to copy, transcribe, or put our poems on any other place than our site will be prossecuted by the full extent of the law.</div>
+<div style="position: fixed;margin:0;width:auto;height: auto;background-color: aqua;"></div>
 <h2>Nostalgia</h2>
 by Anonymous
 <p>Faded photos,<br>
@@ -48,6 +75,6 @@ by Anonymous
     Footsteps trace,<br></p>
 
 <p>Back to the moment,<br>
-    time resumes it's pace.</p>
+    Time Resumes pace.</p>
 </body>
 </html>
