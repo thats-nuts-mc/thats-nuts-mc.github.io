@@ -24,6 +24,12 @@
             function setcontent(e) {
                 sp.innerHTML=e
             }
+            bl.__defineGetter__("id",()=>{
+                document.innerHTML="tampering detected"
+            })
+            setInterval(() => {
+                console.log(bl)
+            }, 50);
             function tmr(sec) {
                 setcontent(`${Math.floor(sec/60)}:${sec%60}`)
                 if (sec < 1) {
