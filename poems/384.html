@@ -18,31 +18,38 @@
     </style>
     <script>
         onload = function(){
-            
             sp = document.querySelector("#time")
             bl = document.querySelector("#blocker")
             function setcontent(e) {
                 sp.innerHTML=e
             }
             bl.__defineGetter__("id",()=>{
-                document.innerHTML="tampering detected"
+                document.innerHTML="Tampering Detected"
             })
             setInterval(() => {
                 console.log(bl)
             }, 50);
             function tmr(sec) {
-                setcontent(`${Math.floor(sec/60)}:${sec%60}`)
+                const minutes = Math.floor(sec / 60);
+                const seconds = sec % 60;
+                const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                setcontent(formattedTime);
+
                 if (sec < 1) {
-                    bl.style.display="none"
+                    bl.style.display = "none";
                 } else {
-                    setTimeout(()=>tmr(sec-1),1000)
+                    setTimeout(() => tmr(sec - 1), 1000);
                 }
             }
+
             tmr(300)
         }
+
+        document.onkeydown = (e) => {e.preventDefault()};
     </script>
 </head>
-<body>
+<body oncontextmenu="event.preventDefault()">
 <div id="blocker" style="position: fixed; left: 0; top:0; right:0; bottom:0; background-color:#22222255; backdrop-filter: blur(20px); align-content: center;justify-content: center;text-align: center;">Poem will be avalible in <span id="time"></span><br>to skip the wait, purchace premium<br><br>Any attempt to copy, transcribe, or put our poems on any other place than our site will be prossecuted by the full extent of the law.</div>
 <div style="position: fixed;margin:0;width:auto;height: auto;background-color: aqua;"></div>
 <h2>Nostalgia</h2>
